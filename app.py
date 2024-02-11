@@ -40,19 +40,21 @@ if uploaded_file is not None:
         for cf in df['c.f.']:
             valid = np.nan
             valido = ""
-            valid = codicefiscale.is_valid(cf)
-            if valid == True:
-                st.write("Il codice fiscale " + cf + " è OK")
-                valido = "OK"
-            else:
-                st.write("Il codice fiscale " + cf + " NON è OK")
-                valido = "NON OK"
-
-            df_ciclo = pd.DataFrame(columns = ['Codice fiscale','Valido'])
-            df_ciclo.loc[0] = [cf, valido]
-
-            Result = pd.concat([Result, df_ciclo], axis = 0)            
-            
+            try:
+                valid = codicefiscale.is_valid(cf)
+                if valid == True:
+                    st.write("Il codice fiscale " + cf + " è OK")
+                    valido = "OK"
+                else:
+                    st.write("Il codice fiscale " + cf + " NON è OK")
+                    valido = "NON OK"
+    
+                df_ciclo = pd.DataFrame(columns = ['Codice fiscale','Valido'])
+                df_ciclo.loc[0] = [cf, valido]
+    
+                Result = pd.concat([Result, df_ciclo], axis = 0)            
+            except:
+                pass
         st.dataframe(Result)
 
         # buffer to use for excel writer
