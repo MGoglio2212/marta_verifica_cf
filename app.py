@@ -129,8 +129,8 @@ if uploaded_file is not None:
             else:
                 coerenza = "CF NON COERENTE CON DATI PERSONALI"
 
-            df_ciclo_2 = pd.DataFrame(columns = ['Nome','Cognome','Sesso','Data di nascita','Luogo di nascita','Codice fiscale','Coerenza','aa'])
-            df_ciclo_2.loc[0] = [nome, cognome, sesso, data, luogo, cf, coerenza,cf_recode]
+            df_ciclo_2 = pd.DataFrame(columns = ['Nome','Cognome','Sesso','Data di nascita','Luogo di nascita','Codice fiscale','Coerenza'])
+            df_ciclo_2.loc[0] = [nome, cognome, sesso, data, luogo, cf, coerenza]
 
             Result_2 = pd.concat([Result_2, df_ciclo_2], axis = 0)            
             
