@@ -29,7 +29,7 @@ if uploaded_file is not None:
     Result = pd.DataFrame()
 
     uu = df.columns 
-    if 'Codice fiscale' not in uu:
+    if 'c.f.' not in uu:
         st.write("ATTENZIONE: nel file excel non esiste una colonna che si chiama esattamente Codice fiscale")
         st.write("ATTENZIONE: elaborazione interrotta")
         st.write("ATTENZIONE: verificare il file e riprovare")
@@ -37,7 +37,7 @@ if uploaded_file is not None:
 
     else:
         st.write("VERIFICA DELLA CORRETTA FORMA DEL CODICE FISCALE (NON CONTROLLA COERENZA CON I DATI PERSONALI)")
-        for cf in df['Codice fiscale']:
+        for cf in df['c.f.']:
             valid = np.nan
             valido = ""
             valid = codicefiscale.is_valid(cf)
